@@ -1,0 +1,228 @@
+/* https://meyerweb.com/eric/tools/css/reset/ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+html,body{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  
+  
+  
+}
+body{
+  background-color: rgba(0, 0, 0, 0.493);
+}
+
+
+.calculator{
+  position: relative;
+  min-width: 0;
+<<<<<<< HEAD
+  min-height: 0;
+  height: auto;
+  
+=======
+  min-height: 500px;
+  height: auto;
+  
+  
+>>>>>>> 7425082 (added + - = logic function)
+  width: 350px;
+  background-color: whitesmoke;
+  top: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid;
+  border-width: 0.3em;
+  border-color: rgb(121, 112, 112);
+  
+    
+
+}
+
+div.calculator{
+  display: grid;
+  grid-template-columns: auto;
+<<<<<<< HEAD
+  
+ grid-template-rows: auto 300px;
+ 
+=======
+  grid-template-rows: auto 400px;
+  
+>>>>>>> 7425082 (added + - = logic function)
+}
+
+.calculator-screen{
+ 
+  display: grid;
+<<<<<<< HEAD
+  grid-template-rows:auto;
+  
+  min-height: 50px;
+=======
+  grid-template-rows: minmax(0px,auto);
+>>>>>>> 7425082 (added + - = logic function)
+  text-align: right;
+  letter-spacing:0.15em;
+  font-size: 19px;
+  border: solid;
+<<<<<<< HEAD
+  
+=======
+
+>>>>>>> 7425082 (added + - = logic function)
+  border-color: rgb(173, 173, 173);
+  background-color: rgb(247, 247, 205);
+
+  
+}
+
+.calculations-history{
+<<<<<<< HEAD
+  
+  word-wrap: break-word;
+  word-break: break-all;
+  width: 100%;
+}
+
+#history-operand{
+  word-wrap: break-word;
+  word-break: break-all;
+  max-width: 100%;
+=======
+  text-align: left;
+  font-size: 1.2rem;
+  word-wrap: break-word;
+  word-break: break-all;
+  width: 100%;
+  
+  
+  
+}
+.calculations{
+  
+  font-size: 30px;
+  word-wrap: break-word;
+  word-break: break-all;
+  width: 100%;
+>>>>>>> 7425082 (added + - = logic function)
+}
+
+
+
+
+
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 7425082 (added + - = logic function)
+  
+
+
+.button{
+  
+  box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	background-color:#ffffff;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+
+.button:hover {
+	background:linear-gradient(to top, #d6d6d6 100%, #ffffff 100%);
+	background-color:#f6f6f6;
+}
+.button:active {
+	position:relative;
+	top:1px;
+}
+
+.action{
+  box-shadow:inset 0px 1px 0px 0px #97c4fe;
+	background:linear-gradient(to bottom, #7fa0c7 5%, #769edf 100%);
+	background-color:#3d94f6;
+	border-radius:6px;
+	border:1px solid #337fed;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #1570cd;
+}
+
+.action:hover {
+	background:linear-gradient(to bottom, #6891d3 5%, #61a0e7 100%);
+	background-color:#1e62d0;
+}
+.action:active {
+	position:relative;
+	top:1px;
+}
+
+
+#equals{
+  grid-column-start: 4;
+  grid-column-end: 6;
+  grid-row-start: 4;
+  grid-row-end: span 1;
+}
+
+
+.buttons{
+  
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-template-rows: auto auto auto auto;
+  grid-auto-flow: column;
+  column-gap: 2px;
+  row-gap: 5px;
+  padding-top: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-bottom: 2px;
+  background-color: rgb(216, 216, 216);
+ 
+} 
+

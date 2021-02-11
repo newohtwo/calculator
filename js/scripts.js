@@ -2,21 +2,13 @@ const buttons = document.querySelectorAll('.button');
 const calcScreen = document.querySelector(".calculations");
 const calcHistory = document.querySelector(".calculations-history");
 calcScreen.textContent = "";
-<<<<<<< HEAD
-let userNumbers = "";
-let historyNumber = ""
-
-
-initButtons();
-
-=======
-let userNumber = "";
-let historyNumbers = "";
-let previous = 0;
+let userInputNum = "";
+let historyCalculations = "";
+let previousNumber = 0;
 let result = 0;
 let signUsed = "";
 let actionBtnFlag = true;
-let equalPressed = false;
+let equalPressedFlag = false;
 
 
 
@@ -25,19 +17,11 @@ let equalPressed = false;
 
 initButtons();
 //initialize the buttons giving them functions
->>>>>>> 7425082 (added + - = logic function)
 function initButtons(){
     
     const arrClass = document.querySelectorAll(".buttons");
         for (let i of arrClass) {
             i.addEventListener("click", (e) => {
-<<<<<<< HEAD
-                if (e.target.classList.contains("button")) {
-                    console.log(calcScreen.length);
-                    console.log("button found" + e.target.textContent);
-                }else if(e.target.classList.contains("action")){
-                    console.log("action found"+e.target.textContent);
-=======
                 
                 if (e.target.classList.contains("button")) {
                     numberBtn(e.target);
@@ -45,22 +29,19 @@ function initButtons(){
                 }else if(e.target.classList.contains("action")){
                     console.log("action found"+e.target.textContent);
                     operate(e.target);
->>>>>>> 7425082 (added + - = logic function)
                 }
             })
     }
 }
-<<<<<<< HEAD
-=======
 
 
 //show the buttons pressed on the screen
 function numberBtn(btnPressedId){
-    if(userNumber.length === 17 || equalPressed === true){
+    if(userInputNum.length === 17 || equalPressedFlag === true){
 
     }else{
-    userNumber+=btnPressedId.textContent;
-    calcScreen.textContent = userNumber;
+    userInputNum+=btnPressedId.textContent;
+    calcScreen.textContent = userInputNum;
     actionBtnFlag =true;
     }
 }
@@ -68,25 +49,25 @@ function numberBtn(btnPressedId){
 
 //give porupuse to the action buttons
 function operate(btnActionId){
-    //calcHistory.textContent += `${userNumbers} ${btnActionId.textContent}`;
+    
     
     let sign = btnActionId.textContent;
     switch(sign){
         case "C":
             
-            userNumber = calcScreen.textContent.slice(0,-1);
-            calcScreen.textContent = userNumber;
+            userInputNum = calcScreen.textContent.slice(0,-1);
+            calcScreen.textContent = userInputNum;
             break;
 
         case"AC":
-            userNumber = "";
-            historyNumbers = "";
+            userInputNum = "";
+            historyCalculations = "";
             signUsed = "";
-            previous = 0;
+            previousNumber = 0;
             result = 0;
             calcScreen.textContent = "";
             calcHistory.textContent = "";
-            equalPressed = false;
+            equalPressedFlag = false;
             break;
 
         case "=":
@@ -102,16 +83,22 @@ function operate(btnActionId){
             if(actionBtnFlag)
                 subtract();
             break;
+
+        case "x":
+            if(actionBtnFlag)
+                multiply();
+            break;
         
     }
 }
 
 function add(){
 
-    if(equalPressed === true){
-        calcHistory.textContent = `${previous} +`;
-        equalPressed = false;
+    if(equalPressedFlag === true){
+        calcHistory.textContent = `${previousNumber} +`;
+        equalPressedFlag = false;
         signUsed = "+";
+        console.log("in fourth add");
         return;
     }
 
@@ -119,37 +106,42 @@ function add(){
         finishLastAction("+");
         console.log("in adding");
         actionBtnFlag = false;
+        console.log("in third add");
         return;
     }
     
     if(signUsed === "+"){
-        calcHistory.textContent += ` ${userNumber} + `;
-        result = Number(previous) + Number(userNumber);
-        previous = result;
-        calcScreen.textContent = result;
-        userNumber = "";
-        actionBtnFlag = false;
+        if(userInputNum == "")
+            return;
         
+        calcHistory.textContent += ` ${userInputNum} +`;
+        result = Number(previousNumber) + Number(userInputNum);
+        previousNumber = result;
+        calcScreen.textContent = result;
+        userInputNum = "";
+        actionBtnFlag = false;
+        console.log("in second add");
 
         return;
     }
 
-    previous = Number(userNumber);
-    calcHistory.textContent += ` ${previous} +`;
+    previousNumber = Number(userInputNum);
+    calcHistory.textContent += ` ${previousNumber} +`;
     signUsed ="+";
-    userNumber = "";
+    userInputNum = "";
     actionBtnFlag = false;
+    console.log("in first add");
     
     
 
 }
 
 function subtract(){
-    //todo figure out how to switch bettwen + and - without losing track, make ther other action to finish first
+    
 
-    if(equalPressed === true){
-        calcHistory.textContent = `${previous} -`;
-        equalPressed = false;
+    if(equalPressedFlag === true){
+        calcHistory.textContent = `${previousNumber} -`;
+        equalPressedFlag = false;
         signUsed = "-";
         return;
     }
@@ -162,26 +154,73 @@ function subtract(){
     }
 
     if(signUsed === "-"){
-        calcHistory.textContent += ` ${userNumber} - `;
-        result = Number(previous) - Number(userNumber);
-        previous = result;
+        if(userInputNum == "")
+            return;
+
+        calcHistory.textContent += ` ${userInputNum} -`;
+        result = Number(previousNumber) - Number(userInputNum);
+        previousNumber = result;
         calcScreen.textContent = result;
-        userNumber = "";
+        userInputNum = "";
         actionBtnFlag = false;
         return;
     }
 
-    previous = Number(userNumber);
-    calcHistory.textContent += ` ${previous} -`;
+    previousNumber = Number(userInputNum);
+    calcHistory.textContent += ` ${previousNumber} -`;
     signUsed ="-";
-    userNumber = "";
+    userInputNum = "";
     actionBtnFlag = false;
 }
 
-function equals(){//todo figure out the equals function 
+
+function multiply(){
+    
+
+    if(equalPressedFlag === true){
+        calcHistory.textContent = `${previousNumber} x`;
+        equalPressedFlag = false;
+        signUsed = "x";
+        return;
+    }
+
+    if(signUsed !== "x" && signUsed !== ""){
+        finishLastAction("x");
+        actionBtnFlag = false;
+        return;
+    }
+
+    if(signUsed === "x"){
+        if(userInputNum == "")
+            return;
+        calcHistory.textContent += ` ${userInputNum} x`;
+        result = Number(previousNumber) * Number(userInputNum);
+        previousNumber = result;
+        calcScreen.textContent = result;
+        userInputNum = "";
+        actionBtnFlag = false;
+        return;
+    }
+
+    previousNumber = Number(userInputNum);
+    calcHistory.textContent += ` ${previousNumber} x`;
+    signUsed ="x";
+    userInputNum = "";
+    actionBtnFlag = false;
+}
+
+
+
+function equals(){
+    let regexP = /[- + x /  . ]/g;
+    if(calcHistory.textContent.slice(-1).match(/[=]/g) || (calcHistory.textContent.slice(-1).match(regexP) && userInputNum ===""))
+    return;
+
+    
     finishLastAction("=");
-    equalPressed = true;
+    equalPressedFlag = true;
     actionBtnFlag =true;
+    
 }
 
 
@@ -190,28 +229,25 @@ function finishLastAction(actionUsedRightNow){
     
     switch(signUsed){
         case"+":
-            result = Number(previous) + Number(userNumber);
-            calcScreen.textContent = result;
-            calcHistory.textContent+=` ${userNumber} ${actionUsedRightNow}`;
-
-            previous = result;     
-            userNumber = "";
-            if(actionUsedRightNow !== "=")
-            signUsed = actionUsedRightNow;
+            result = Number(previousNumber) + Number(userInputNum);
             break;
 
         case "-":
-            result = Number(previous) - Number(userNumber);
-            calcScreen.textContent = result;
-            calcHistory.textContent+=` ${userNumber} ${actionUsedRightNow}`;
-
-            previous = result;     
-            userNumber = "";
-            if(actionUsedRightNow !== "=")
-            signUsed = actionUsedRightNow;
+            result = Number(previousNumber) - Number(userInputNum);
             break;
-        
+
+        case "x":
+            result = Number(previousNumber) * Number(userInputNum);
+            break;
     }
 
+    calcScreen.textContent = result;
+    calcHistory.textContent+=` ${userInputNum} ${actionUsedRightNow}`;
+
+   // if(actionUsedRightNow !== "=")
+    signUsed = actionUsedRightNow;
+
+    previousNumber = result;     
+    userInputNum = "";
+
 }
->>>>>>> 7425082 (added + - = logic function)

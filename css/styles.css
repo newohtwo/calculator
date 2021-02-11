@@ -44,16 +44,10 @@ body{
 .calculator{
   position: relative;
   min-width: 0;
-<<<<<<< HEAD
-  min-height: 0;
-  height: auto;
-  
-=======
   min-height: 500px;
   height: auto;
   
   
->>>>>>> 7425082 (added + - = logic function)
   width: 350px;
   background-color: whitesmoke;
   top: 20%;
@@ -70,35 +64,18 @@ body{
 div.calculator{
   display: grid;
   grid-template-columns: auto;
-<<<<<<< HEAD
-  
- grid-template-rows: auto 300px;
- 
-=======
   grid-template-rows: auto 400px;
   
->>>>>>> 7425082 (added + - = logic function)
 }
 
 .calculator-screen{
  
   display: grid;
-<<<<<<< HEAD
-  grid-template-rows:auto;
-  
-  min-height: 50px;
-=======
   grid-template-rows: minmax(0px,auto);
->>>>>>> 7425082 (added + - = logic function)
   text-align: right;
   letter-spacing:0.15em;
   font-size: 19px;
   border: solid;
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> 7425082 (added + - = logic function)
   border-color: rgb(173, 173, 173);
   background-color: rgb(247, 247, 205);
 
@@ -106,18 +83,6 @@ div.calculator{
 }
 
 .calculations-history{
-<<<<<<< HEAD
-  
-  word-wrap: break-word;
-  word-break: break-all;
-  width: 100%;
-}
-
-#history-operand{
-  word-wrap: break-word;
-  word-break: break-all;
-  max-width: 100%;
-=======
   text-align: left;
   font-size: 1.2rem;
   word-wrap: break-word;
@@ -133,18 +98,14 @@ div.calculator{
   word-wrap: break-word;
   word-break: break-all;
   width: 100%;
->>>>>>> 7425082 (added + - = logic function)
 }
 
 
 
 
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 7425082 (added + - = logic function)
   
 
 

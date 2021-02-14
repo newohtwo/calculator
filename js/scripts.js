@@ -35,7 +35,7 @@ function initButtons(){
 }
 
 
-//show the buttons pressed on the screen
+//show the buttons pressed on the screen,and get the input into variable
 function numberBtn(btnPressedId){
     if(userInputNum.length === 17 || equalPressedFlag === true){
 
@@ -88,40 +88,45 @@ function operate(btnActionId){
             if(actionBtnFlag)
                 multiply();
             break;
+
+        case "/":
+            if(actionBtnFlag)
+                divide();
+            break;
+        case"+/-":
+           
+                numberStateChange();
+            break;
         
     }
 }
 
 function add(){
-
+    
     if(equalPressedFlag === true){
         calcHistory.textContent = `${previousNumber} +`;
         equalPressedFlag = false;
         signUsed = "+";
-        console.log("in fourth add");
+        actionBtnFlag = false;
         return;
     }
 
     if(signUsed !== "+" && signUsed !== ""){
         finishLastAction("+");
-        console.log("in adding");
         actionBtnFlag = false;
-        console.log("in third add");
         return;
     }
     
     if(signUsed === "+"){
         if(userInputNum == "")
             return;
-        
+
         calcHistory.textContent += ` ${userInputNum} +`;
         result = Number(previousNumber) + Number(userInputNum);
         previousNumber = result;
         calcScreen.textContent = result;
         userInputNum = "";
         actionBtnFlag = false;
-        console.log("in second add");
-
         return;
     }
 
@@ -130,7 +135,7 @@ function add(){
     signUsed ="+";
     userInputNum = "";
     actionBtnFlag = false;
-    console.log("in first add");
+    
     
     
 
@@ -143,12 +148,12 @@ function subtract(){
         calcHistory.textContent = `${previousNumber} -`;
         equalPressedFlag = false;
         signUsed = "-";
+        actionBtnFlag = false;
         return;
     }
 
     if(signUsed !== "-" && signUsed !== ""){
         finishLastAction("-");
-        console.log("in subtract");
         actionBtnFlag = false;
         return;
     }
@@ -163,6 +168,7 @@ function subtract(){
         calcScreen.textContent = result;
         userInputNum = "";
         actionBtnFlag = false;
+        
         return;
     }
 
@@ -171,6 +177,7 @@ function subtract(){
     signUsed ="-";
     userInputNum = "";
     actionBtnFlag = false;
+    
 }
 
 
@@ -181,6 +188,7 @@ function multiply(){
         calcHistory.textContent = `${previousNumber} x`;
         equalPressedFlag = false;
         signUsed = "x";
+        actionBtnFlag = false;
         return;
     }
 
@@ -209,6 +217,44 @@ function multiply(){
     actionBtnFlag = false;
 }
 
+function divide(){
+    
+
+    if(equalPressedFlag === true){
+        calcHistory.textContent = `${previousNumber} /`;
+        equalPressedFlag = false;
+        signUsed = "/";
+        actionBtnFlag = false;
+        return;
+    }
+
+    if(signUsed !== "-" && signUsed !== ""){
+        finishLastAction("/");
+        actionBtnFlag = false;
+        return;
+    }
+
+    if(signUsed === "/"){
+        if(userInputNum == "")
+            return;
+
+        calcHistory.textContent += ` ${userInputNum} /`;
+        result = Number(previousNumber) / Number(userInputNum);
+        previousNumber = result;
+        calcScreen.textContent = result;
+        userInputNum = "";
+        actionBtnFlag = false;
+        
+        return;
+    }
+
+    previousNumber = Number(userInputNum);
+    calcHistory.textContent += ` ${previousNumber} /`;
+    signUsed ="/";
+    userInputNum = "";
+    actionBtnFlag = false;
+    
+}
 
 
 function equals(){
@@ -222,8 +268,6 @@ function equals(){
     actionBtnFlag =true;
     
 }
-
-
 
 function finishLastAction(actionUsedRightNow){
     
@@ -239,6 +283,9 @@ function finishLastAction(actionUsedRightNow){
         case "x":
             result = Number(previousNumber) * Number(userInputNum);
             break;
+        case "/":
+            result = Number(previousNumber) / Number(userInputNum);
+            break;
     }
 
     calcScreen.textContent = result;
@@ -250,4 +297,10 @@ function finishLastAction(actionUsedRightNow){
     previousNumber = result;     
     userInputNum = "";
 
+}
+//figure out the change state from postive to negatiev
+function numberStateChange(){
+
+
+    
 }

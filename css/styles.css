@@ -49,6 +49,7 @@ body{
   
   
   width: 350px;
+  max-width: 25%;
   background-color: whitesmoke;
   top: 20%;
   margin-left: auto;

@@ -32,37 +32,46 @@ html,body{
   bottom: 0;
   right: 0;
   overflow: auto;
+ 
   
   
   
 }
 body{
   background-color: rgba(0, 0, 0, 0.493);
+  height: 99%;
+  width: 99%;
 }
 
 
 .calculator{
   position: relative;
-  min-width: 0;
+  min-width: 0px;
   min-height: 500px;
   height: auto;
   
   
-  width: 350px;
-  max-width: 25%;
+  
+  width: auto;
+  max-width: 350px;
+  
   background-color: whitesmoke;
   top: 20%;
   margin-left: auto;
   margin-right: auto;
+  
   border: solid;
   border-width: 0.3em;
   border-color: rgb(121, 112, 112);
   
-    
 
 }
 
+
+
+
 div.calculator{
+  
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto 400px;

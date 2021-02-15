@@ -54,19 +54,10 @@ function operate(btnActionId){
     let sign = btnActionId.textContent;
     switch(sign){
         case "C":
-            
-            userInputNum = calcScreen.textContent.slice(0,-1);
-            calcScreen.textContent = userInputNum;
+                deleteLastChar();
             break;
         case"AC":
-            userInputNum = "";
-            historyCalculations = "";
-            signUsed = "";
-            previousNumber = 0;
-            result = 0;
-            calcScreen.textContent = "";
-            calcHistory.textContent = "";
-            equalPressedFlag = false;
+                resetCalculator();
             break;
         case "=":
                 equals();
@@ -92,7 +83,7 @@ function operate(btnActionId){
             break;
 
         case ".":
-            makeNumberDeci();
+                makeNumberDeci();
             break;
         
     }
@@ -185,7 +176,6 @@ function subtract(){
     
 }
 
-
 function multiply(){
     
 
@@ -222,7 +212,6 @@ function multiply(){
     userInputNum = "";
     actionBtnFlag = false;
 }
-
 function divide(){
     
 
@@ -263,7 +252,6 @@ function divide(){
     
 }
 
-
 function equals(){
     let regexP = /[- + x /  . ]/g;
     if(calcHistory.textContent.slice(-1).match(/[=]/g) || (calcHistory.textContent.slice(-1).match(regexP) && userInputNum ===""))
@@ -292,9 +280,16 @@ function finishLastAction(actionUsedRightNow){
             result = Number(previousNumber) * Number(userInputNum);
             break;
         case "/":
+            if(Number(previousNumber) / Number(userInputNum) === Infinity){
+               calcHistory.textContent ="no can do";
+               alert("division by 0 is not allowed");
+               resetCalculator();
+               return;
+            }
             result = Number(previousNumber) / Number(userInputNum);
             break;
     }
+
 
     calcScreen.textContent = result;
     calcHistory.textContent+=` ${userInputNum} ${actionUsedRightNow}`;
@@ -338,6 +333,25 @@ function makeNumberDeci(){
         calcScreen.textContent = userInputNum;
     }
 
+}
+function deleteLastChar(){
+
+    if(userInputNum !== ""){
+    userInputNum = calcScreen.textContent.slice(0,-1);
+    calcScreen.textContent = userInputNum;
+    }
+
+
+}
+function resetCalculator(){
+    userInputNum = "";
+    historyCalculations = "";
+    signUsed = "";
+    previousNumber = 0;
+    result = 0;
+    calcScreen.textContent = "";
+    calcHistory.textContent = "";
+    equalPressedFlag = false;
 }
 
 

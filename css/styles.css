@@ -32,7 +32,7 @@ html,body{
   bottom: 0;
   right: 0;
   overflow: auto;
- 
+  
   
   
   
@@ -41,6 +41,9 @@ body{
   background-color: rgba(0, 0, 0, 0.493);
   height: 99%;
   width: 99%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Inconsolata", monospace;
 }
 
 
@@ -49,11 +52,9 @@ body{
   min-width: 0px;
   min-height: 500px;
   height: auto;
-  
-  
-  
+
   width: auto;
-  max-width: 350px;
+  max-width: 360px;
   
   background-color: whitesmoke;
   top: 20%;

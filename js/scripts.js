@@ -50,7 +50,7 @@ function numberBtn(btnPressedId){
 //give porupuse to the action buttons
 function operate(btnActionId){
     
-    
+    console.log(userInputNum);
     let sign = btnActionId.textContent;
     switch(sign){
         case "C":
@@ -58,7 +58,6 @@ function operate(btnActionId){
             userInputNum = calcScreen.textContent.slice(0,-1);
             calcScreen.textContent = userInputNum;
             break;
-
         case"AC":
             userInputNum = "";
             historyCalculations = "";
@@ -69,36 +68,35 @@ function operate(btnActionId){
             calcHistory.textContent = "";
             equalPressedFlag = false;
             break;
-
         case "=":
                 equals();
             break;
-
         case"+":
             if(actionBtnFlag)
                 add();
             break;
-
         case "-":
             if(actionBtnFlag)
                 subtract();
             break;
-
         case "x":
             if(actionBtnFlag)
                 multiply();
             break;
-
         case "/":
             if(actionBtnFlag)
                 divide();
             break;
         case"+/-":
-           
                 numberStateChange();
+            break;
+
+        case ".":
+            makeNumberDeci();
             break;
         
     }
+    console.log(userInputNum);
 }
 
 function add(){
@@ -108,13 +106,17 @@ function add(){
         equalPressedFlag = false;
         signUsed = "+";
         actionBtnFlag = false;
+        calcScreen.textContent = "";
+        console.log("4 input" + userInputNum);
         return;
     }
 
     if(signUsed !== "+" && signUsed !== ""){
         finishLastAction("+");
         actionBtnFlag = false;
+        console.log("3");
         return;
+        
     }
     
     if(signUsed === "+"){
@@ -127,6 +129,7 @@ function add(){
         calcScreen.textContent = result;
         userInputNum = "";
         actionBtnFlag = false;
+        console.log("2");
         return;
     }
 
@@ -135,6 +138,7 @@ function add(){
     signUsed ="+";
     userInputNum = "";
     actionBtnFlag = false;
+    console.log("1");
     
     
     
@@ -149,6 +153,7 @@ function subtract(){
         equalPressedFlag = false;
         signUsed = "-";
         actionBtnFlag = false;
+        calcScreen.textContent = "";
         return;
     }
 
@@ -189,6 +194,7 @@ function multiply(){
         equalPressedFlag = false;
         signUsed = "x";
         actionBtnFlag = false;
+        calcScreen.textContent = "";
         return;
     }
 
@@ -225,6 +231,7 @@ function divide(){
         equalPressedFlag = false;
         signUsed = "/";
         actionBtnFlag = false;
+        calcScreen.textContent = "";
         return;
     }
 
@@ -269,6 +276,7 @@ function equals(){
     
 }
 
+//finish the last action made by the user and show the result
 function finishLastAction(actionUsedRightNow){
     
     switch(signUsed){
@@ -298,9 +306,38 @@ function finishLastAction(actionUsedRightNow){
     userInputNum = "";
 
 }
-//figure out the change state from postive to negatiev
+
+//change the state of a number from 100 to -100
 function numberStateChange(){
+   
+    if(userInputNum !== ""){
+        if(userInputNum.indexOf("-") === -1){
+            userInputNum = `-${userInputNum}`;
+        }else
+        userInputNum = calcScreen.textContent.slice(1,userInputNum.length);
 
+        calcScreen.textContent = userInputNum;
+    }
 
+    if(userInputNum === "" && previousNumber !== 0){
+        if(previousNumber > 0){
+            calcScreen.textContent = `-${previousNumber}`;
+            previousNumber *= -1;
+        }else{
+        calcScreen.textContent = calcScreen.textContent.slice(1,calcScreen.textContent.length); 
+        previousNumber *= -1;
+        }
+    }
     
 }
+
+function makeNumberDeci(){
+
+    if(userInputNum !== "" && userInputNum.indexOf(".") === -1){
+        userInputNum = `${userInputNum}.`;
+        calcScreen.textContent = userInputNum;
+    }
+
+}
+
+

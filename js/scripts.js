@@ -16,6 +16,7 @@ let equalPressedFlag = false;
 
 
 initButtons();
+document.addEventListener('keydown', keyPressListenr);
 //initialize the buttons giving them functions
 function initButtons(){
     
@@ -25,9 +26,7 @@ function initButtons(){
                 
                 if (e.target.classList.contains("button")) {
                     numberBtn(e.target);
-                    console.log("button found" + e.target.textContent);
                 }else if(e.target.classList.contains("action")){
-                    console.log("action found"+e.target.textContent);
                     operate(e.target);
                 }
             })
@@ -49,7 +48,6 @@ function numberBtn(btnPressedId){
 
 //give porupuse to the action buttons
 function operate(btnActionId){
-    
     
     let sign = btnActionId.textContent;
     switch(sign){
@@ -98,14 +96,14 @@ function add(){
         signUsed = "+";
         actionBtnFlag = false;
         calcScreen.textContent = "";
-        console.log("4 input" + userInputNum);
+        
         return;
     }
 
     if(signUsed !== "+" && signUsed !== ""){
         finishLastAction("+");
         actionBtnFlag = false;
-        console.log("3");
+        
         return;
         
     }
@@ -120,7 +118,7 @@ function add(){
         calcScreen.textContent = result;
         userInputNum = "";
         actionBtnFlag = false;
-        console.log("2");
+        
         return;
     }
 
@@ -129,7 +127,7 @@ function add(){
     signUsed ="+";
     userInputNum = "";
     actionBtnFlag = false;
-    console.log("1");
+    
     
     
     
@@ -364,5 +362,57 @@ function resetCalculator(){
     calcHistory.textContent = "";
     equalPressedFlag = false;
 }
+function keyPressListenr(e){
+    //add switch case
+    let actions = /[+ - - * / / 8 Enter .  Backspace Escape Tab = ]/g;
+    let number = /[1 2 3 4 5 6 7 8 9 0 ]/g;
+    console.log(""+e.key);
 
+    if(e.key.match(actions)){
+
+        switch(e.key){
+            case "Backspace":
+                    deleteLastChar();
+                break;
+            case"Escape":
+                    resetCalculator();
+                break;
+            case "=":
+                    equals();
+                break;
+            case "Enter":
+                    equals();
+                break;
+            case"+":
+                if(actionBtnFlag)
+                    add();
+                break;
+            case "-":
+                if(actionBtnFlag)
+                    subtract();
+                break;
+            case "*":
+                if(actionBtnFlag)
+                    multiply();
+                break;
+            case "/":
+                if(actionBtnFlag)
+                    divide();
+                break;
+            case"Tab":
+                    numberStateChange();
+                break;
+            case ".":
+                    makeNumberDeci();
+                break;
+        }
+
+    }else if(e.key.match(number)){
+        userInputNum+=e.key;
+        calcScreen.textContent = userInputNum;
+        actionBtnFlag =true;
+    }
+
+
+}
 

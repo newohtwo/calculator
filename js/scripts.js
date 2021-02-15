@@ -50,7 +50,7 @@ function numberBtn(btnPressedId){
 //give porupuse to the action buttons
 function operate(btnActionId){
     
-    console.log(userInputNum);
+    
     let sign = btnActionId.textContent;
     switch(sign){
         case "C":
@@ -87,7 +87,7 @@ function operate(btnActionId){
             break;
         
     }
-    console.log(userInputNum);
+    
 }
 
 function add(){
@@ -225,6 +225,12 @@ function divide(){
     }
 
     if(signUsed !== "-" && signUsed !== ""){
+        if(userInputNum === "0"){
+            calcHistory.textContent ="no can do";
+            alert("division by 0 is not allowed");
+            resetCalculator();
+            return;
+        }
         finishLastAction("/");
         actionBtnFlag = false;
         return;
@@ -233,7 +239,6 @@ function divide(){
     if(signUsed === "/"){
         if(userInputNum == "")
             return;
-
         calcHistory.textContent += ` ${userInputNum} /`;
         result = Number(previousNumber) / Number(userInputNum);
         previousNumber = result;
@@ -257,7 +262,14 @@ function equals(){
     if(calcHistory.textContent.slice(-1).match(/[=]/g) || (calcHistory.textContent.slice(-1).match(regexP) && userInputNum ===""))
     return;
 
-    
+    if(userInputNum ===  "0" && signUsed === "/"){
+        calcHistory.textContent ="no can do";
+        alert("division by 0 is not allowed");
+        resetCalculator();
+        return;
+        
+    }
+
     finishLastAction("=");
     equalPressedFlag = true;
     actionBtnFlag =true;
@@ -266,7 +278,12 @@ function equals(){
 
 //finish the last action made by the user and show the result
 function finishLastAction(actionUsedRightNow){
-    
+    if(userInputNum === "0"){
+        calcHistory.textContent ="no can do";
+        alert("division by 0 is not allowed");
+        resetCalculator();
+        return;
+    }
     switch(signUsed){
         case"+":
             result = Number(previousNumber) + Number(userInputNum);
@@ -280,12 +297,6 @@ function finishLastAction(actionUsedRightNow){
             result = Number(previousNumber) * Number(userInputNum);
             break;
         case "/":
-            if(Number(previousNumber) / Number(userInputNum) === Infinity){
-               calcHistory.textContent ="no can do";
-               alert("division by 0 is not allowed");
-               resetCalculator();
-               return;
-            }
             result = Number(previousNumber) / Number(userInputNum);
             break;
     }

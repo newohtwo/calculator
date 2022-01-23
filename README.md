@@ -1,6 +1,6 @@
 # Calculator
 Simple calculator made with html,css,js Es6 features.<br>
-Meant to furture improve my foundations in web development.
+Meant to further improve my foundations in web development.
 ## Features
 * add
 * subtract
@@ -10,6 +10,8 @@ Meant to furture improve my foundations in web development.
 * keyboard support
 ---
 ## [Try it out!](https://newohtwo.github.io/calculator/)
+
+Part of the [The Odin Project](https://newohtwo.github.io/calculator/) curriculum
 
 
 

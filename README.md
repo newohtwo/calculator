@@ -1,5 +1,5 @@
 # Calculator
-Simple calculator made with html,css,js Es6 features.
+Simple calculator made with html,css,js Es6 features.<br>
 Meant to furture improve my foundations in web development.
 ## Features
 * add

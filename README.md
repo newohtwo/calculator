@@ -8,7 +8,6 @@ Meant to furture improve my foundations in web development.
 * divide
 * undo incorrect number
 * keyboard support
-
 ---
 [Try it out!](https://newohtwo.github.io/calculator/)
 

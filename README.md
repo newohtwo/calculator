@@ -11,7 +11,7 @@ Meant to further improve my foundations in web development.
 ---
 ## [Try it out!](https://newohtwo.github.io/calculator/)
 
-Part of the [The Odin Project](https://newohtwo.github.io/calculator/) curriculum
+Part of the [The Odin Project](https://newohtwo.github.io/calculator/) curriculum.
 
 
 

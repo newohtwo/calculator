@@ -11,7 +11,6 @@ Meant to furture improve my foundations in web development.
 
 ---
 [Try it out!](https://newohtwo.github.io/calculator/)
-## Acknowledgement
-Project inspiration from The Odin Project.
+
 
 
